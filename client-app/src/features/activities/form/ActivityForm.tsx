@@ -18,18 +18,18 @@ export default function ActivityForm({activity: selectedActivity, closeForm, cre
         date: '',
         city: '',
         venue: ''
-    }
+    }//Nullish coalescing operator 
 
     const [activity, setActivity] = useState(initialState);
 
     function handleSubmit() {
-        createOrEdit(activity);
+        createOrEdit(activity);//parametreden degil state'ten alındı 
     }
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         const {name, value} = event.target;
         setActivity({...activity, [name]: value})
-    }
+    }//Butun componentların onchangelerinde handler baglandı ama handler fonksiyonu targetta element oldugu icin bir tane yazildi 
 
     return (
         <Segment clearing>
