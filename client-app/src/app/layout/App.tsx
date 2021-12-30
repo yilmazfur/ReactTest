@@ -15,7 +15,7 @@ function App() {
     axios.get<Activity[]>('http://localhost:5000/api/activities').then(response => {
       setActivities(response.data);
     })
-  }, [])
+  }, [])// only run once on mount
 
   function handleSelectActivity(id: string) {
     setSelectedActivity(activities.find(x => x.id === id));
@@ -34,10 +34,10 @@ function App() {
     setEditMode(false);
   }
 
-  function handleCreateOrEditActivity(activity: Activity) {
+  function handleCreateOrEditActivity(activity: Activity) {//UI operations
     activity.id 
-      ? setActivities([...activities.filter(x => x.id !== activity.id), activity])
-      : setActivities([...activities, {...activity, id: uuid()}]);
+      ? setActivities([...activities.filter(x => x.id !== activity.id), activity])//update
+      : setActivities([...activities, {...activity, id: uuid()}]);//create 
     setEditMode(false);
     setSelectedActivity(activity);
   }
@@ -61,7 +61,7 @@ function App() {
           createOrEdit={handleCreateOrEditActivity}
           deleteActivity={handleDeleteActivity}
         />
-      </Container>
+      </Container> //todo what
 
     </>
   );
