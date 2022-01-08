@@ -19,7 +19,7 @@ axios.interceptors.response.use(async response => {
     }
 })
 
-const responseBody = <T> (response: AxiosResponse<T>) => response.data;
+const responseBody = <T> (response: AxiosResponse<T>) => response.data; // response=>response.data) olmasın diye
 
 const requests = {
     get: <T> (url: string) => axios.get<T>(url).then(responseBody),
@@ -28,7 +28,8 @@ const requests = {
     del: <T> (url: string) => axios.delete<T>(url).then(responseBody),
 }
 
-const Activities = {
+//export const Activities = {
+    const Activities = {
     list: () => requests.get<Activity[]>('/activities'),
     details: (id: string) => requests.get<Activity>(`/activities/${id}`),
     create: (activity: Activity) => axios.post<void>('/activities', activity),
@@ -37,7 +38,7 @@ const Activities = {
 }
 
 const agent = {
-    Activities
+    Activities,//Activities:Activities
 }
 
 export default agent;

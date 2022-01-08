@@ -23,7 +23,8 @@ export default function ActivityForm({activity: selectedActivity, closeForm, cre
 
     const [activity, setActivity] = useState(initialState);
 
-    function handleSubmit() {
+    function handleSubmit(data: any) {
+        console.log("dataaaa", data);
         createOrEdit(activity);//parametreden degil state'ten alındı 
     }
 
@@ -32,7 +33,7 @@ export default function ActivityForm({activity: selectedActivity, closeForm, cre
         setActivity({...activity, [name]: value})
     }//Butun componentların onchangelerinde handler baglandı ama handler fonksiyonu targetta element oldugu icin bir tane yazildi 
 
-    return (
+    return (//form optimization
         <Segment clearing>
             <Form onSubmit={handleSubmit} autoComplete='off'>
                 <Form.Input placeholder='Title' value={activity.title} name='title' onChange={handleInputChange} />

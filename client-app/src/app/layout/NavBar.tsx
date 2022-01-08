@@ -5,7 +5,8 @@ interface Props {
     openForm: () => void;
 }
 
-export default function NavBar({openForm}: Props) {
+// export default function NavBar({openForm}: Props) {
+function NavBar({openForm}: Props) {
     return (
         <Menu inverted fixed='top'>
             <Container>
@@ -21,3 +22,4 @@ export default function NavBar({openForm}: Props) {
         </Menu>
     )
 }
+export default React.memo(NavBar);
